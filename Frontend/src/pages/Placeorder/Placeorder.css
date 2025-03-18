@@ -1,0 +1,205 @@
+/* Main Order Page Layout */
+.place-order {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 100px;
+    padding: 20px;
+    position: relative; /* Ensure modal positioning inside this */
+}
+
+.place-order-left {
+    width: 100%;
+    max-width: max(30%, 500px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.place-order-left .title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.place-order-left input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.multi-fields {
+    display: flex;
+    gap: 10px;
+}
+
+.multi-fields input {
+    flex: 1;
+}
+
+.place-order-right {
+    flex: 1;
+    max-width: 400px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-total {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-total h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: #555;
+}
+
+.cart-total hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
+
+.cart-total button {
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.cart-total button:hover {
+    background-color: darkred;
+}
+
+/* Payment Modal - Positioned in the Middle of Address & Payment */
+.payment-modal {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    border-top: 6px solid tomato;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.payment-modal h2 {
+    font-size: 1.7rem;
+    color: tomato;
+    margin-bottom: 20px;
+}
+
+.payment-modal label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    background: #f8f8f8;
+    transition: 0.3s ease-in-out;
+}
+
+.payment-modal label:hover {
+    background: #ffe5e0;
+}
+
+.payment-modal input[type="radio"] {
+    transform: scale(1.3);
+    accent-color: tomato;
+    cursor: pointer;
+}
+
+.payment-modal button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background-color: tomato;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.payment-modal button:hover {
+    background-color: #ff4737;
+}
+
+/* Overlay Effect */
+.payment-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .place-order {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .place-order-left,
+    .place-order-right {
+        max-width: 100%;
+    }
+
+    .multi-fields {
+        flex-direction: column;
+    }
+
+    .payment-modal {
+        width: 90%;
+        position: fixed;
+    }
+}
