@@ -7,7 +7,7 @@ const StoreContextProvider = ({ children }) => {
     const [food_list, setFoodList] = useState([]); 
     const [cartItem, setCartItem] = useState({});
     const [token, setToken] = useState(localStorage.getItem("token") || null);
-    const url = "http://localhost:3000";
+    const url = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
     const fetchFoodList = async () => {
         try {
@@ -102,7 +102,7 @@ const StoreContextProvider = ({ children }) => {
             const updatedCart = { ...prev };
             updatedCart[itemId] = prev[itemId] - 1;
             if (updatedCart[itemId] <= 0) {
-                delete updatedCart[itemId]; // Remove if quantity is 0
+                delete updatedCart[itemId]; 
             }
             return updatedCart;
         });

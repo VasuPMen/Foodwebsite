@@ -12,16 +12,31 @@ import orderRouter from "./routes/orderRouter.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-
-connectDb();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// CORS configuration - Allow multiple origins (development and production)
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+    ? process.env.ALLOWED_ORIGINS.split(',') 
+    : ["http://localhost:5173", "http://localhost:5174"];
+
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],  // ✅ Allow multiple origins
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            // For production, you might want to restrict this
+            // For now, allow all origins for easier deployment
+            callback(null, true);
+        }
+    },
     credentials: true,
 }));
+
+connectDb();
 
 
 app.use("/images", express.static(path.join(__dirname, "uploads")));
@@ -38,7 +53,9 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 

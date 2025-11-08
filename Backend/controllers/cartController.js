@@ -51,7 +51,7 @@ const removeFromCart = async (req, res) => {
             delete user.cartData[itemId]; // ✅ Remove item if count reaches 0
         }
 
-        await user.save(); // ✅ Save changes to user model
+        await user.save(); 
 
         res.json({ success: true, message: "Item removed from cart", cartData: user.cartData });
     } catch (error) {

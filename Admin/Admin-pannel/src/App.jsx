@@ -8,7 +8,7 @@ import { Order } from './pages/Orders/Order'
 import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
-  const url=  "http://localhost:3000"
+  const url = import.meta.env.VITE_API_URL || "http://localhost:3000"
   return (
     <div>
         <ToastContainer/>

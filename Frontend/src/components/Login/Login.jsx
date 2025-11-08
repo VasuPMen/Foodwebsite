@@ -22,15 +22,14 @@ const Login = ({ setShowLogin }) => {
         event.preventDefault();
         let newUrl = currState === "Login" ? `${url}/api/user/login` : `${url}/api/user/register`;
     
-        console.log("Sending data:", data); // ✅ Debug: See what is being sent
+        console.log("Sending data:", data); 
     
         try {
             const response = await axios.post(newUrl, data, {
-                headers: { "Content-Type": "application/json" }, // ✅ Fix: Ensure JSON is sent
+                headers: { "Content-Type": "application/json" },
             });
     
-            console.log("Full API Response:", response.data); // ✅ Debug API response
-    
+            console.log("Full API Response:", response.data);
             if (response.data.success) {
                 const user = response.data.user || {};
                 const userId = user._id;

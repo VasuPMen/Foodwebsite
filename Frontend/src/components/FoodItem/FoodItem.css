@@ -3,8 +3,20 @@
     margin: auto;
     border-radius: 15px;
     box-shadow: 0px 0px 10px #00000015;
-    transition: 0.3s;
-    animation: fadeIn 0.5s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.food-item.fade-in {
+    /* Animated state */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .food-item:hover {
@@ -18,7 +30,7 @@
 }
 
 .food-item-info {
-    padding: 20px;   
+    padding: 20px;
 }
 
 .food-item-name-rating {
@@ -28,57 +40,72 @@
     margin-bottom: 10px;
 }
 
-.food-item-price {
-    font-weight: bold;
-    color: #27ae60;
-}
-
-.food-item-name-rating p{
+.food-item-name-rating p {
     font-size: 20px;
     font-weight: 500;
 }
 
-.food-item-name-rating img{
+.food-item-name-rating img {
     width: 70px;
 }
 
-.food-item-description{
+.food-item-description {
     color: #676767;
     font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.food-item-price{
-    color: tomato;
+.food-item-price {
     font-weight: 500;
+    color: tomato;
     font-size: 22px;
 }
 
-.food-item-img-container{
+.food-item-img-container {
     position: relative;
 }
 
-.food-item-img-container .add{
+.food-item-img-container .add {
     width: 35px;
     position: absolute;
     bottom: 15px;
-    right:15px;
+    right: 15px;
     cursor: pointer;
     border-radius: 50%;
 }
 
-.food-item-counter{
+.food-item-counter {
     position: absolute;
     bottom: 15px;
-    right:15px;
+    right: 15px;
     cursor: pointer;
     border-radius: 50px;
-    gap:10px;
+    gap: 10px;
     padding: 6px;
     display: flex;
     align-items: center;
     background-color: white;
 }
 
-.food-item-counter img{
+.food-item-counter img {
     width: 30px;
+}
+
+/* Optional: Make it responsive */
+@media (max-width: 768px) {
+    .food-item-description {
+        font-size: 16px;
+    }
+
+    .food-item-price {
+        font-size: 20px;
+    }
+
+    .food-item-name-rating p {
+        font-size: 18px;
+    }
+
+    .food-item-name-rating img {
+        width: 60px;
+    }
 }

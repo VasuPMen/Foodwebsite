@@ -14,7 +14,7 @@ const Cart = () => {
         console.log("url:", url);
     }, [cartItem, food_list]);
 
-    // ✅ Prevent crash by checking if `food_list` or `cartItem` is empty
+
     if (!food_list.length) {
         return <h2>Loading cart...</h2>;
     }
